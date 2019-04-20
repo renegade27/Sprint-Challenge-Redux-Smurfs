@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { fetch } from '../actions';
+import SmurfPanel from './smurfForm';
 
 /*
  to wire this component up you're going to need a few things.
@@ -18,6 +19,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <SmurfPanel />
         {this.props.smurfs.map(smurf => {
           return (
             <div className="smurf">

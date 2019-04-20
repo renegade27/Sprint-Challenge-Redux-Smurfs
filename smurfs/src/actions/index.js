@@ -7,6 +7,7 @@ import axios from 'axios';
 export const FETCH_START = 'FETCH_START';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
+export const POST_SMURF = 'POST_SMURF';
 
 /*
   For this project you'll need at least 2 action creators for the main portion,
@@ -38,4 +39,11 @@ export const fetch = () => dispatch => {
             error : err
         })
     })
+}
+
+export const post = newTodo => {
+  return {
+      type : POST_SMURF,
+      payload : newTodo
+  }
 }
