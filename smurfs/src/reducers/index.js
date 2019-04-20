@@ -38,9 +38,9 @@ const smurfreducer = (state=initialState, action) => {
     case FETCH_FAILURE:
       return { ...state, fetchingSmurfs : false, error : action.error}
     case POST_START:
-      return { ...state, addingSmurf : true}
+      return { ...state, addingSmurf : action.payload}
     case POST_SMURF:
-      return { ...state, addingSmurf : false, smurfs : [...state.smurfs, action.payload]}
+      return { ...state, addingSmurf : false, smurfs: [...state.smurfs, action.payload]}
     case POST_FAILURE:
       return { ...state, addingSmurf : false, error : action.payload}
     default:

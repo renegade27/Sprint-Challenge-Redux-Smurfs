@@ -30,7 +30,7 @@ class TodoPanel extends Component {
     render() {
         return (
             <div className="smurf-menu">
-                <form onSubmit={this.formHandler}>
+                <form onSubmit={(e) => { this.formHandler(e) }}>
                     <input
                         name="name"
                         value={this.state.name}
@@ -56,6 +56,5 @@ class TodoPanel extends Component {
     }
 
 }
-
 
 export default connect(null, { post })(TodoPanel);

@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfPanel />
+        <SmurfPanel addingSmurf={this.props.addingSmurf}/>
         {this.props.smurfs.map(smurf => {
           return (
             <Smurf smurf={smurf} />
@@ -34,6 +34,7 @@ class App extends Component {
 const mapStateToProps = state => {
   return {
     smurfs : state.smurfs,
+    addingSmurf : state.addingSmurf,
     fetchingSmurf : state.fetchingSmurfs,
     error : state.error
   };
