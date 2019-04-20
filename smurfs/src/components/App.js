@@ -3,6 +3,7 @@ import './App.css';
 import { connect } from 'react-redux';
 import { fetch } from '../actions';
 import SmurfPanel from './smurfForm';
+import Smurf from './Smurf';
 
 /*
  to wire this component up you're going to need a few things.
@@ -22,11 +23,7 @@ class App extends Component {
         <SmurfPanel />
         {this.props.smurfs.map(smurf => {
           return (
-            <div className="smurf">
-              <p>{smurf.name}</p>
-              <p>{smurf.age}</p>
-              <p>{smurf.height}</p>
-            </div>
+            <Smurf smurf={smurf} />
           )
         })}
       </div>

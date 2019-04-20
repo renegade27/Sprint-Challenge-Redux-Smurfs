@@ -7,6 +7,9 @@ import axios from 'axios';
 export const FETCH_START = 'FETCH_START';
 export const FETCH_FAILURE = 'FETCH_FAILURE';
 export const FETCH_SUCCESS = 'FETCH_SUCCESS';
+
+export const POST_START = 'POST_START';
+export const POST_FAILURE = 'POST_FAILURE'
 export const POST_SMURF = 'POST_SMURF';
 
 /*
@@ -41,9 +44,21 @@ export const fetch = () => dispatch => {
     })
 }
 
-export const post = newTodo => {
-  return {
-      type : POST_SMURF,
-      payload : newTodo
-  }
-}
+export const post = smurf => dispatch => {
+  dispatch({
+    type : POST_START,
+    payload : true
+  })
+  return axios.post('http://localhost:3333/smurfs/', smurf)
+  .then(({data}) => {
+    dispatch({ type: POST_SMURF, payload: data });
+  })
+  .catch(err => {
+      dispatch({
+          type : POST_FAILURE,
+          payload : err.response.status
+      })
+  })
+};
+
+

@@ -1,7 +1,12 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-import { FETCH_START, FETCH_SUCCESS, FETCH_FAILURE, POST_SMURF } from '../actions';
+import { FETCH_START, 
+        FETCH_SUCCESS, 
+        FETCH_FAILURE, 
+        POST_START,
+        POST_SMURF,
+        POST_FAILURE } from '../actions';
 
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
@@ -32,8 +37,12 @@ const smurfreducer = (state=initialState, action) => {
       return { ...state, fetchingSmurfs : false, smurfs : action.payload}
     case FETCH_FAILURE:
       return { ...state, fetchingSmurfs : false, error : action.error}
+    case POST_START:
+      return { ...state, addingSmurf : true}
     case POST_SMURF:
-      return { ...state, smurfs : [...state.smurfs, action.payload]}
+      return { ...state, addingSmurf : false, smurfs : [...state.smurfs, action.payload]}
+    case POST_FAILURE:
+      return { ...state, addingSmurf : false, error : action.payload}
     default:
       return state
   }
